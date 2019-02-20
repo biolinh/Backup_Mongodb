@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  backup_mongodb:
+    image: biolinh/backup_mongodb
+    container_name: backup_mongodb
+    environment:
+    - MONGO_USER=myuser
+    - MONGO_PASS=mypassword
+    - MONGO_HOST=myhost
+    - MONGO_BACKUP_DIRECTORY=/backup
+    - MONGO_BACKUP_DB=test
+    - MONGO_STORED_DAY=7
+    volumes:
+    - ./backup_mongodb:/backup
+    networks:
+    - backup_mongodb     
+networks: 
+  backup_mongodb:
+    name: backup_mongodb
