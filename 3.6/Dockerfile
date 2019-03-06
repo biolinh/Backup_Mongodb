@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:3.9
+FROM gliderlabs/alpine
 MAINTAINER linh@jmango360.com
 
 ARG MONGO_USER="root"
@@ -20,7 +20,7 @@ RUN apk add --no-cache mongodb-tools bash \
     && apk add --update coreutils \
     && rm -rf /var/cache/apk/*
 
-ADD ./Backup_MongoDB_Database.sh /
+ADD ./script/Backup_MongoDB_Database.sh /
 RUN chmod +x /Backup_MongoDB_Database.sh
 
 ENTRYPOINT ["/Backup_MongoDB_Database.sh"]
